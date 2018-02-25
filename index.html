@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Compare two documents</title>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+
+	<div class="container">
+  <h1 class="display-4">DocTest</h1>
+  <p class="lead">Welcome to my site. Here you can compare two documents and compare similarity between them</p>
+  <hr class="my-4">
+  	<div id="para"></div>
+	<button onclick="getData()">Get Result</button>
+
+</div>
+
+
+	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+		//This function will be called on click and show the result
+			function getData() {
+			  var xhttp = new XMLHttpRequest();
+			  xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			    var myArr=JSON.parse(this.responseText);
+				var dataObj=JSON.stringify(myArr,null,2);
+				document.getElementById('para').innerHTML=dataObj;
+			    }
+			  };
+			  xhttp.open("GET", "http://localhost:3000/db", true);
+			  xhttp.send();
+			}
+		</script>
+	</body>
+</html>
